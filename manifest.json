@@ -3,7 +3,7 @@
   "name": "Time Is Yours",
   "version": "1.0",
   "description": "Tracks Your Tabs and Gives You Overtime Warnings ",
-  "permissions": ["tabs", "storage"],
+  "permissions": ["tabs", "storage", "activeTab", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
@@ -14,5 +14,6 @@
       "48": "icon.png",
       "128": "icon.png"
     }
-  }
+  },
+  "host_permissions":["<all_urls>"]
 }
