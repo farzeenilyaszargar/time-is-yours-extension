@@ -1,0 +1,10 @@
+
+body{
+    background-color: black;
+    color: white;
+    max-width: 400px;
+    min-width: 250px;
+    width: auto;
+    padding: 10px;
+    border-radius: 20px;
+}
