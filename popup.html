@@ -8,9 +8,24 @@
 </head>
 
 <body>
-    <h1>Time Spent</h1>
-    <ul id="timeList"></ul>
+    <div id="header">
+        <h1>Time Spent</h1>
+        <button id="darkModeBtn"> <img src="/dark.png"></button>
+    </div>
+    <div id="displayShi">
+        <ul id="listOfTimes"></ul>
+    </div>
+    <div id="chartShi">
+        <canvas id="timeChart" width="100" height="100"></canvas>
+    </div>
+    <div id="procShi">
+        <label>Warn Procastination: </label>
+        <input type="checkbox">
+    </div>
+    
+
     <script src="popup.js"></script>
+
 </body>
 
 </html>

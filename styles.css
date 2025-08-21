@@ -1,19 +1,102 @@
-body {
-    font-family: Arial, sans-serif;
-    width: 250px;
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Mozilla+Headline:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&display=swap');
+
+
+
+body
+{
+    font-family: "Roboto Slab", serif;
+    width:250px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+    background-color: white;
+    color: black;
+    border-color: black;
 }
 
-h1 {
-    font-size: 16px;
-    margin-bottom: 10px;
+.darkMode
+{
+    background-color: #161616;
+    color: white;
+    border-color: white;
+
 }
 
-ul {
+h1
+{
+    font-size: 24px;
+    font-weight: 800;
+
+}
+
+#header
+{
+    border: 1px solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+}
+
+#header button
+{
+    width: fit-content;
+    border: none;
+    background-color: transparent;
+}
+#header button img
+{
+    width: 25px;
+    height: 25px;
+}
+
+#displayShi
+{
+    height: 150px;
+    border: 1px solid;
+}
+
+#chartShi
+{
+    height: 150px;
+    border: 1px solid ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#procShi
+{
+    height: 50px;
+    border: 1px solid ;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+ul
+{
     list-style: none;
+    border: 1px solid;
+    margin: 0;
     padding: 0;
+    margin-top: 10px;
 }
 
-li {
-    margin-bottom: 5px;
+li
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 25px;
+}
+
+li img
+{
+    width: 15px;
+    height: 15px;
 }

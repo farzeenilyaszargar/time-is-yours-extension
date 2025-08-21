@@ -1,32 +1,43 @@
-
 let activeTabId = null;
 let activeDomain = null;
-let timeData = {}; //format should be "icon-url":"domain-name":"time"
+let storeTabData = {};
+// store in the format of icon, title, timeSpent
 
-function getDomain(url) {
-    try {
+
+function getDomainName(url)
+{
+    try{
         return new URL(url).hostname;
-    } catch {
+    }
+    catch{
         return null;
     }
 }
 
-chrome.tabs.onActivated.addListener(async (activeInfo) => {
-    const tab = await chrome.tabs.get(activeInfo.tabId);
-    activeTabId = activeInfo.tabId;
-    activeDomain = getDomain(tab.url);
-});
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    if (tabId === activeTabId && changeInfo.url) {
-        activeDomain = getDomain(changeInfo.url);
-    }
-});
+chrome.tabs.onActivated.addListener(async (activeTab)=>{
 
-setInterval(() => {
-    if (activeDomain) {
-        if (!timeData[activeDomain]) timeData[activeDomain] = 0;
-        timeData[activeDomain]++;
-        chrome.storage.local.set({ timeData });
+    const tab = await chrome.tabs.get(activeTab.tabId);
+    activeTabId = activeTab.tabId;
+    activeDomain = getDomainName(tab.url);
+
+})
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab)=>{
+    if (tabId == activeTabId && changeInfo.url)
+    {
+        activeDomain = getDomainName(changeInfo.url);
     }
-}, 1000);
+})
+
+setInterval(()=>{
+    if(activeDomain)
+    {
+        if(!storeTabData[activeDomain])
+        {
+            storeTabData[activeDomain] = 0;
+        }
+        storeTabData[activeDomain]++;
+        chrome.storage.local.set({storeTabData});
+    }
+}, 1000)
