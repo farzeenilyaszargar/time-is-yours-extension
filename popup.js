@@ -8,18 +8,6 @@ darkModeBtn.addEventListener('click', () => {
 })
 
 
-let warnOn = true;
-
-function checkBox(){
-    const warnOnBtn = document.getElementById('warnOn');
-    if(warnOnBtn.checked){    
-        warnOn = true;
-    }
-    else{
-        warnOn = false;
-    }
-}
-
 
 
 function drawPieChart(ctx, data, colors) {
@@ -35,6 +23,9 @@ function drawPieChart(ctx, data, colors) {
         ctx.fillStyle = colors[i];
         ctx.fill();
         startAngle += sliceAngle;
+        ctx.lineWidth = 1;         // border thickness
+        ctx.strokeStyle = "#000000";  // border color (white looks nice)
+        ctx.stroke();
     });
 }
 
@@ -42,7 +33,7 @@ const domainColors = {
     youtube: "#FF0000",
     chrome: "#4285F4",
     reddit: "#FF5700",
-    google: "#FFFF00",
+    google: "#ffffffff",
     twitter: "#1DA1F2",
     facebook: "#1877F2",
     instagram: "#E1306C",
@@ -51,9 +42,8 @@ const domainColors = {
     tiktok: "#69C9D0",
     netflix: "#E50914",
     amazon: "#FF9900",
-    github: "#181717",
     stackoverflow: "#F48024",
-    wikipedia: "#000000",
+    wikipedia: "#efe3e3ff",
     yahoo: "#430297",
     msn: "#00ADEF",
     microsoft: "#F25022",
@@ -96,6 +86,9 @@ const domainColors = {
     figma: "#f21e9dff",
     chatgpt: "#b4b4b4ff",
     openai: "#a0a0a0ff",
+    w3schools: "#4CAF50",
+    codecademy: "#303F9F",
+    coursera: "#2A73CC",
 
 };
 
@@ -121,23 +114,7 @@ function getCleanName(domain) {
 }
 
 
-function warnTime(seconds, domain, remainder) {
-    if(warnOn)
-    {
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secondsLeft = seconds % 60;
-        if(minutes==(remainder)){
-        alert(`You have already spent ${hours} hours, ${minutes} minutes, and ${secondsLeft} seconds on ${domain}`);
-        }
 
-    }
-    else
-    {
-        return;
-    }
-    
-}
 
 
 function updateList() {
@@ -146,7 +123,7 @@ function updateList() {
         const ctx = document.getElementById("timeChart").getContext("2d");
         const values = []
         const labels = []
-        
+
         if (storeTabData) {
             Object.entries(storeTabData).sort((a, b) => b[1] - a[1]).slice(0, 5).forEach(([domain, seconds], i) => {
                 const li = document.createElement('li');
@@ -164,19 +141,24 @@ function updateList() {
                 timeList.appendChild(li);
                 values.push(seconds);
                 labels.push(getCleanName(domain));
-                warnTime(seconds, domain, 3600);
-                
-                
+                const warnOnBtn = document.getElementById('warnOn');
+                if (warnOnBtn.checked) {
+                    if (seconds === 3600) {
+                        alert(`🚨 You've been on ${getCleanName(domain)} for 1 hour straight!`);
+                    }
+
+                }
+
+
+
 
             });
             const colors = labels.map(domain => {
-                    const name = domain.toLowerCase().replace(/^www\./,'').split('.')[0]; // normalize
-                    return domainColors[name] || "#888"; // fallback gray if not in map
+                const name = domain.toLowerCase().replace(/^www\./, '').split('.')[0]; // normalize
+                return domainColors[name] || "#888"; // fallback gray if not in map
             });
             drawPieChart(ctx, values, colors);
-            checkBox();
-            
-            
+
 
 
 

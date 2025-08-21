@@ -32,7 +32,6 @@ h1
 
 #header
 {
-    border: 1px solid;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -48,20 +47,19 @@ h1
 }
 #header button img
 {
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
+
 }
 
 #displayShi
 {
     height: 150px;
-    border: 1px solid;
 }
 
 #chartShi
 {
     height: 150px;
-    border: 1px solid ;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +68,6 @@ h1
 #procShi
 {
     height: 50px;
-    border: 1px solid ;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -81,7 +78,6 @@ h1
 ul
 {
     list-style: none;
-    border: 1px solid;
     margin: 0;
     padding: 0;
     margin-top: 10px;

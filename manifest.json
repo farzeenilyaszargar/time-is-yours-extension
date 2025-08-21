@@ -2,10 +2,15 @@
   "manifest_version": 3,
   "name": "Time Is Yours",
   "version": "1.0",
-  "description": "Tracks Your Tabs and Gives You Overtime Warnings ",
-  "permissions": ["tabs", "storage", "activeTab", "scripting"],
+  "description": "Tracks Your Tabs & Websites and Helps Your Better Manage Your Time",
+  "permissions": ["tabs", "storage", "activeTab", "scripting", "notifications"],
   "background": {
     "service_worker": "background.js"
+  },
+   "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
   },
   "action": {
     "default_popup": "popup.html",
